@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-webapp
+spec:
+  replicas: 3 # example of scalability
+  selector:
+    matchLabels:
+      app: php-webapp
+  template:
+    metadata:
+      labels:
+        app: php-webapp
+    spec:
+      containers:
+      - name: php-webapp
+        image: [DOCKER_IMAGE_NAME]
+        ports:
+        - containerPort: 80
