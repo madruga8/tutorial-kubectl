@@ -8,8 +8,7 @@ docker-compose build
 docker-compose up
 
 
-
-
+Access the Application:
 
 minikube start
 

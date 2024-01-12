@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: php-webapp
 spec:
-  replicas: 3 # example of scalability
+  replicas: 3
   selector:
     matchLabels:
       app: php-webapp
@@ -14,6 +14,14 @@ spec:
     spec:
       containers:
       - name: php-webapp
-        image: [DOCKER_IMAGE_NAME]
+        image: php-webapp:latest
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
