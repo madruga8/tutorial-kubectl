@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  python-app:
+    build:
+      context: ./python
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50' # Limit to 50% of a CPU
+          memory: 100M  # Limit to 100 MB
+
+  node-app:
+    build:
+      context: ./node
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 100M
+
+  php-app:
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 100M
